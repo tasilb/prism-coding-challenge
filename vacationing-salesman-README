@@ -1,0 +1,27 @@
+The script opens up a Python interpreter with the file containing the relevant functions and code.
+
+The list of cities is loaded into a Python list through STDIN for use with the functions.
+The code uses the geopy library, of which a copy is included in the repository.
+
+--------------------
+Basic Implementation
+--------------------
+
+Main function:
+We maintain a list of distances that we return after processing the list of places to go, appending the distance to the list after each pair.
+To get the distance between two cities, we can use geopy's capabilities. It allows us to query a geolocation service with the input string format and get data about it. From this data, geopy can compute the distance between the coordinates between the two coordinates using the Great Circle formula.
+
+Usage:
+python3 vacationing-salesman.py [unit] [--optimize]
+This defaults to miles, and not optimized.
+
+Language choice:
+I chose Python because I'm the most comfortable with it for technical challenges, and because there are a lot of libraries written for it.
+
+Design decisions:
+I chose to let geopy do most of the heavy lifting in terms of querying locations, so that inputs can be more flexible, so the argument parsing involved only putting inputs strings into a list. I decided to use the Great Circle formula instead of the more accurate Vincenty formula because Vincenty doesn't always compute. In hindsight, it would have been much better to put the script in a main function and running that instead of leaving it outside of a function.
+
+Running out of time:
+I wanted to implement a naive TSP solution to optimize, but I ran out of time. To do this, I would have created a dictionary of permutations of the input list, with each permutation having a value of its list of distances. Then I would take the min of the keys and output that path as the optimized route. Organizing my code into functions would have made this much easier.
+
+Implementing modes of transport would have involved API calls to a service like Google Maps

@@ -1,0 +1,29 @@
+Deck of Cards README
+-------------------
+
+My framework revolves around the DeckOfCards class, of which an instance has two
+lists and shuffle() and getNextCard() methods. Because of the sequential nature 
+of drawing cards from a predetermined deck ordering, Python's lists were a good 
+fit for my implementation. The lists are lists of pairs (rank, suit), with each 
+pair representing a card in a standard deck. Both lists are initialized to 
+represent all 52 cards in a standard deck. The list 'deck' is the actual deck 
+of cards that is drawn from. Calling getNextCard() pops a card off the end of 
+the list and returns it, functioning as a card draw. The method makes sure that 
+there are cards left to be drawn by examining the length of 'deck' before 
+attempting to pop a card off. The list 'allCards' is a list containing all 52 
+cards that is kept to make shuffling simple. Calling shuffle() shuffles the 
+order of cards in the 'allCards' list, and then copies 'allCards' into 'deck'. 
+This makes 'deck' contain 52 reordered cards after shuffling, which is like 
+returning all cards back to the deck.
+
+In terms of ambiguity, I was not sure what the intended definition of "framework" 
+was, so I went with a class that adequately represents the problem spec such that 
+cards and decks are abstracted away from the user. Access to the instance 
+variables is not restricted, and so the framework is easily extensible.
+To use this framework, simply create an instance of the DeckOfCards class.
+
+To ensure correctness, I...
+- checked that drawing from an empty deck errored
+- a deck is not in the same order after shuffling
+- shuffling a deck returns all drawn cards to the deck
+
